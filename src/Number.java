@@ -5,8 +5,7 @@ public class Number {
         StringBuilder nombre = new StringBuilder("");
         char chiffre;
         boolean hasComma = false;
-        //|| (nombre.length() != 0 && (chiffre = Utils.recognizeDot()) != 0) || (nombre.length() == 0 && (chiffre = Utils.recognizeAdditiveOperator()) != 0)
-        while (((chiffre = Utils.recognizeDigit()) != 0) ) {
+        while (((chiffre = Utils.recognizeDigit()) != 0) || (nombre.length() != 0 && (chiffre = Utils.recognizeDot()) != 0) || (nombre.length() == 0 && (chiffre = Utils.recognizeAdditiveOperator()) != 0)) {
             if (chiffre == '.') {
                 if (!hasComma) {
                     hasComma = true;
