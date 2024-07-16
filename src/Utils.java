@@ -1,27 +1,35 @@
 package src;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Utils {
     public static void readCharacter(char calu) {
-        Scanner scanner = new Scanner(System.in);
-        do {
-            calu = scanner.next().charAt(0);
-        } while (calu == ' ' || calu == '\n' || calu == '\t');
-        scanner.close();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            do {
+                calu = (char) reader.read();
+            } while (calu == ' ' || calu == '\n' || calu == '\t');
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static int clearBuffer() {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         char temp;
         int retour = 0;
-        do {
-            temp = scanner.next().charAt(0);
-            if (temp != ' ' && temp != '\t' && temp != '\n') {
-                retour = -1;
-            }
-        } while (temp != '\n');
-        scanner.close();
+        try {
+            do {
+                temp = (char) reader.read();
+                if (temp != ' ' && temp != '\t' && temp != '\n') {
+                    retour = -1;
+                }
+            } while (temp != '\n');
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return retour;
     }
 
