@@ -17,7 +17,6 @@ public class Number {
             }
             nombre.append(chiffre);
             Utils.readCharacter();
-            System.out.println(interpreter.calu);
         }
         if (nombre.length() == 0) {
             interpreter.error.errorFactor = 1;

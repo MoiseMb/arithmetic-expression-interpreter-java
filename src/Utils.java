@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Utils {
-    public static synchronized void readCharacter() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static void readCharacter() {
         try {
             do {
                 interpreter.calu = (char) reader.read();
