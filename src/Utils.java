@@ -10,7 +10,7 @@ public class Utils {
         try {
             do {
                 interpreter.calu = (char) reader.read();
-            } while (interpreter.calu == ' ' || interpreter.calu == ' ' || interpreter.calu == '\t');
+            } while (interpreter.calu == ' ' || interpreter.calu == '\n' || interpreter.calu == '\t');
         } catch (IOException e) {
             e.printStackTrace();
         }
