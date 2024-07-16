@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Utils {
-    public static void readCharacter(char calu) {
+    public static synchronized void readCharacter() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             do {
-                calu = (char) reader.read();
-            } while (calu == ' ' || calu == '\n' || calu == '\t');
+                interpreter.calu = (char) reader.read();
+            } while (interpreter.calu == ' ' || interpreter.calu == ' ' || interpreter.calu == '\t');
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,27 +33,27 @@ public class Utils {
         return retour;
     }
 
-    public static char recognizeDigit(char calu) {
-        return (calu >= '0' && calu <= '9') ? calu : 0;
+    public static char recognizeDigit() {
+        return (interpreter.calu >= '0' && interpreter.calu <= '9') ? interpreter.calu : 0;
     }
 
-    public static char recognizeDot(char calu) {
-        return (calu == '.') ? calu : 0;
+    public static char recognizeDot() {
+        return (interpreter.calu == '.') ? interpreter.calu : 0;
     }
 
-    public static char recognizeAdditiveOperator(char calu) {
-        return (calu == '+' || calu == '-') ? calu : 0;
+    public static char recognizeAdditiveOperator() {
+        return (interpreter.calu == '+' || interpreter.calu == '-') ? interpreter.calu : 0;
     }
 
-    public static char recognizeMultiplicativeOperator(char calu) {
-        return (calu == '*' || calu == '/') ? calu : 0;
+    public static char recognizeMultiplicativeOperator() {
+        return (interpreter.calu == '*' || interpreter.calu == '/') ? interpreter.calu : 0;
     }
 
-    public static char recognizeParentheseOpen(char calu) {
-        return (calu == '(') ? calu : 0;
+    public static char recognizeParentheseOpen() {
+        return (interpreter.calu == '(') ? interpreter.calu : 0;
     }
 
-    public static char recognizeParentheseClose(char calu) {
-        return (calu == ')') ? calu : 0;
+    public static char recognizeParentheseClose() {
+        return (interpreter.calu == ')') ? interpreter.calu : 0;
     }
 }

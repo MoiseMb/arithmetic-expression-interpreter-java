@@ -1,8 +1,8 @@
 package src;
 
 public class interpreter {
-    public char calu;
-    ErreurManager error = new ErreurManager();
+    public static char calu;
+    public static ErreurManager error = new ErreurManager();
 
     public void interpreterFonction() {
         int status;
@@ -15,26 +15,26 @@ public class interpreter {
 
     public int analizerAndExtractor() {
         Expression expressionExpression = new Expression();
-        Utils.readCharacter(calu);
-        if (calu == '.') {
+        Utils.readCharacter();
+        if (interpreter.calu == '.') {
             return 1;
-        } else if (calu == '=') {
+        } else if (interpreter.calu == '=') {
             System.out.println("La syntaxe de l'expression est erronee");
             Utils.clearBuffer();
             return 0;
         } else {
             double expressionValue = 1.0;
             int temp;
-            while (calu != '=') {
-                expressionValue = expressionExpression.recognizeExpression(error, calu);
-                if (error.errorGlobal == 1) break;
+            while (interpreter.calu != '=') {
+                expressionValue = expressionExpression.recognizeExpression();
+                if (interpreter.error.errorGlobal == 1) break;
             }
             temp = Utils.clearBuffer();
-            if (error.errorGlobal == 1 || temp != 0) {
-                error.errorGlobal = 0;
-                error.errorExpression = 0;
-                error.errorTerm = 0;
-                error.errorFactor = 0;
+            if (interpreter.error.errorGlobal == 1 || temp != 0) {
+                interpreter.error.errorGlobal = 0;
+                interpreter.error.errorExpression = 0;
+                interpreter.error.errorTerm = 0;
+                interpreter.error.errorFactor = 0;
                 System.out.println("La syntaxe de l'expression est erronee");
             } else {
                 System.out.println("la syntaxe de l'expression est correcte");
