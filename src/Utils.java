@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Utils {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    public static void readCharacter() {
+    public static synchronized void readCharacter() {
         try {
             do {
                 interpreter.calu = (char) reader.read();
@@ -17,7 +17,6 @@ public class Utils {
     }
 
     public static int clearBuffer() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         char temp;
         int retour = 0;
         try {
